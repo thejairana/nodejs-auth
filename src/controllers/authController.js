@@ -9,8 +9,21 @@ async function signup(req, res) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email, password: hashedPassword, phone });
     await user.save();
-    res.status(201).json({ message: "User created successfully" });
+    const token = generateToken({ id: user._id, email: user.email });
+    res.status(201).json({
+      message: "User created successfully",
+      data: {
+        token,
+        user: {
+          id: user._id,
+          email: user.email,
+          name: user.name,
+          phone: user.phone,
+        },
+      },
+    });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 }

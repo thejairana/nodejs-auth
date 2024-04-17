@@ -5,9 +5,9 @@ const { generateToken } = require("../config/jwt");
 
 async function signup(req, res) {
   try {
-    const { username, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new User({ name, email, password: hashedPassword, phone });
     await user.save();
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
@@ -24,7 +24,15 @@ async function login(req, res) {
     if (!validPassword)
       return res.status(401).json({ message: "Invalid credentials" });
     const token = generateToken({ id: user._id, email: user.email });
-    res.json({ token });
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        phone: user.phone,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

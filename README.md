@@ -1,6 +1,3 @@
-Certainly! A well-crafted README.md file is crucial for helping users understand and use your project effectively. Below is a sample README.md file tailored for your Node.js and Express.js application:
-
-````markdown
 # Node.js & Express.js Authentication API
 
 This is a simple Node.js and Express.js application that provides authentication APIs for user signup and login. It uses MongoDB for data storage and JWT (JSON Web Tokens) for authentication and authorization.
@@ -26,7 +23,6 @@ Before running this application, ensure you have the following installed:
    ```bash
    git clone https://github.com/your_username/your_repository.git
    ```
-````
 
 2. Navigate to the project directory:
 
@@ -95,8 +91,3 @@ Contributions are welcome! If you find any issues or want to contribute enhancem
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-```
-
-Feel free to customize this README file further to match your project's specific details and requirements. It's important to keep it clear, concise, and informative to help users understand and use your application effectively.
-```
